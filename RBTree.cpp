@@ -1,7 +1,5 @@
 // Questions:
-//  - Successor and Predecessor returning NULL seg faults the program. Is this what we want?
 //  - How to add nilNode pointer for root's parent. Nothing I tried worked.
-//  -
 
 #include <iostream>
 #include <string>
