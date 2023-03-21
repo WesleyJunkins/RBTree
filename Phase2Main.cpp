@@ -56,11 +56,17 @@ int main(){
 	cout <<T2.rank("G") << endl;
 	//Should output 6
 	
-	cout <<*(T1.successor("C"))<<endl;
-	//Should output D
-	
-	cout <<*(T1.predecessor("C"))<<endl;
-	//Should output B		
+	if(T1.successor("C") != NULL)
+	{
+		cout <<*(T1.successor("C"))<<endl;
+		// Should output D
+	}
+
+	if(T1.predecessor("C") != NULL)
+	{
+		cout <<*(T1.predecessor("C"))<<endl;
+		//Should output B		
+	}
 	
 	K[0] = "J";
 	RBTree<string,string> T3, T4(K,K,10);

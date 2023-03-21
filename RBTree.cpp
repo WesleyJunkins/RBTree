@@ -1,4 +1,10 @@
+// Questions:
+//  - Successor and Predecessor returning NULL seg faults the program. Is this what we want?
+//  - How to add nilNode pointer for root's parent. Nothing I tried worked.
+//  -
+
 #include <iostream>
+#include <string>
 #include <queue>
 #include <math.h>
 using namespace std;
@@ -190,7 +196,7 @@ public:
                 current = current->right;
             }
         }
-        return nullptr;
+        return NULL;
     };
 
     // NODE SEARCH
@@ -212,7 +218,7 @@ public:
                 current = current->right;
             }
         }
-        return nullptr;
+        return NULL;
     };
 
     // INSERT
@@ -227,7 +233,7 @@ public:
         RB_Insert(newNode);
     };
 
-    // REMOVE----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    // REMOVE
     int remove(keytype K)
     {
         Node *nodeToDelete = nodeSearch(K);
@@ -280,42 +286,54 @@ public:
     keytype *successor(keytype K)
     {
         Node *node = nodeSearch(K);
+        if (node == nullptr)
+        {
+            return NULL;
+        }
         Node *newNode;
         if (node->right != nilNode)
         {
             newNode = treeMinimum(node->right);
+            return &newNode->key;
         }
-        else
+        newNode = node->parent;
+        if ((newNode != nullptr) && (node == newNode->left))
         {
-            newNode = node->parent;
-            while ((newNode != nullptr) && (node == newNode->right))
+            while ((newNode != nullptr) && (node == newNode->left))
             {
                 node = newNode;
                 newNode = newNode->parent;
             }
+            return &newNode->key;
         }
-        return &newNode->key;
+        return NULL;
     };
 
     // K's PREDECESSOR
     keytype *predecessor(keytype K)
     {
         Node *node = nodeSearch(K);
+        if (node == nullptr)
+        {
+            return NULL;
+        }
         Node *newNode;
         if (node->left != nilNode)
         {
             newNode = treeMaximum(node->left);
+            return &newNode->key;
         }
-        else
+        newNode = node->parent;
+        if ((newNode != nullptr) && (node == newNode->right))
         {
-            newNode = node->parent;
             while ((newNode != nullptr) && (node == newNode->left))
             {
                 node = newNode;
                 newNode = newNode->parent;
             }
+            return &newNode->key;
         }
-        return &newNode->key;
+        return NULL;
     };
 
     // SIZE
