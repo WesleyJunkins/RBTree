@@ -79,6 +79,27 @@ int main(){
 	T4.preorder();
 	//Should output E C B D G F I H J K\n
 
+//Added Below
+	T3.inorder();
+	cout<<T3.remove("B")<<endl;
+	cout<<T3.remove("C")<<endl;
+	cout<<T3.remove("D")<<endl;
+	cout<<T3.remove("E")<<endl;
+	cout<<T3.remove("F")<<endl;
+	cout<<T3.remove("G")<<endl;
+	cout<<T3.remove("H")<<endl;
+	cout<<T3.remove("I")<<endl;
+	cout<<T3.remove("J")<<endl;
+	cout<<T3.remove("K")<<endl;
+	cout<<T3.remove("E")<<endl;
+	T3.inorder();
+
+	T3.insert("A", "B");
+	T3.inorder();
+	T3.insert("B", "C");
+	T3.inorder();
+	cout<<T3.select(3)<<endl;
+
     RBTree<int,int> X;
 	for (int i=1;i<1001000;i++) X.insert(i,i);
 	for (int i=1;i<1001000;i++) {
